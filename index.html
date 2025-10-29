@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiência Profissional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .video-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .scene {
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 20px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .scene::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .intro {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 40px;
+        }
+
+        .intro h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .intro p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .chapter-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: bounce 1s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .gos-section {
+            margin: 40px 0;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            border-left: 5px solid;
+            animation: slideIn 0.8s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .goal { border-left-color: #4CAF50; }
+        .obstacle { border-left-color: #FF9800; }
+        .solution { border-left-color: #2196F3; }
+
+        .gos-section h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            animation: rotate 2s infinite;
+        }
+
+        @keyframes rotate {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(360deg); }
+        }
+
+        .goal .icon { background: #4CAF50; color: white; }
+        .obstacle .icon { background: #FF9800; color: white; }
+        .solution .icon { background: #2196F3; color: white; }
+
+        .gos-section p {
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .example {
+            background: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .example:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .conclusion {
+            text-align: center;
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            color: white;
+            padding: 60px 40px;
+        }
+
+        .conclusion h2 {
+            color: white;
+            font-size: 2.5em;
+        }
+
+        .conclusion h2::after {
+            background: white;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255,255,255,0.2);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            animation: popIn 0.8s;
+        }
+
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .control-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        @media (max-width: 768px) {
+            .intro h1 { font-size: 2em; }
+            h2 { font-size: 1.5em; }
+            .scene { padding: 40px 20px; }
+            .controls {
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="video-container">
+        <div class="scene intro">
+            <h1>🚀 O Percurso de Uma Tech Girl</h1>
+            <p>Uma história de liderança, inovação e excelência técnica.</p>
+            <p style="margin-top: 20px; font-style: italic;">De sistemas espaciais a plataformas digitais de última geração...</p>
+        </div>
+
+        <div class="scene" style="animation-delay: 0.3s;">
+            <span class="chapter-number">Capítulo 1</span>
+            <h2>🎯 Tecnologia Transparente e Produtos Intuitivos</h2>
+            
+            <div class="gos-section goal">
+                <h3><span class="icon">🎯</span>Objetivo</h3>
+                <p>Criar tecnologia integrada e produtos digitais que melhorem e simplifiquem a vida das pessoas - sistemas complexos por dentro, simples por fora.</p>
+            </div>
+
+            <div class="gos-section obstacle">
+                <h3><span class="icon">⚠️</span>Obstáculo</h3>
+                <p>Desenvolver sistemas que sejam simultaneamente sofisticados e intuitivos, garantindo escalabilidade, resiliência e fácil manutenção. Uma arquitetura mal pensada leva a produtos lentos, frágeis e difíceis de evoluir.</p>
+            </div>
+
+            <div class="gos-section solution">
+                <h3><span class="icon">✨</span>Solução</h3>
+                
+                <div class="example">
+                    <div class="example-title">📐 Projeto <I>I</I>: Repensar a Arquitetura do Amanhã</div>
+                    <p>Implementou princípios orientadores para garantir arquiteturas prontas para a cloud e orientadas para o futuro. Uma abordagem visionária que construiu sistemas escaláveis desde o início.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Kubernetes</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Cloud-Ready</span>
+                        <span class="tag">.NET Core 8.0</span>
+                    </div>
+                </div>
+
+                <div class="example">
+                    <div class="example-title">🚗 Projeto <I>II</I>: Solução Completa de Comunicação para o Pós-Venda Automóvel</div>
+                    <p>Arquitetou uma solução abrangente de comunicação pós-venda para o mercado automóvel, traduzindo requisitos de negócio em designs de sistema eficazes que servem diretamente as necessidades dos utilizadores.</p>
+                    <div class="tech-tags">
+                        <span class="tag">System Architecture</span>
+                        <span class="tag">Product Backlog</span>
+                        <span class="tag">DDD</span>
+                    </div>
+                </div>
+
+                <div class="example">
+                    <div class="example-title">💄 Projeto <I>III</I>: CRM de Ponta a Ponta</div>
+                    <p>Liderou a arquitetura completa de uma solução de integração CRM que promove a retenção de clientes, reduz tempo de mercado e melhora a consistência da marca - focando em resultados de negócio tangíveis.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Microsoft Dynamics 365</span>
+                        <span class="tag">End-to-End Leadership</span>
+                        <span class="tag">Customer Insights</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene" style="animation-delay: 0.6s;">
+            <span class="chapter-number">Capítulo 2</span>
+            <h2>🌍 Inovação em Projetos Globais</h2>
+            
+            <div class="gos-section goal">
+                <h3><span class="icon">🎯</span>Objetivo</h3>
+                <p>Impulsionar a inovação criando projetos de vanguarda para os melhores clientes do mundo, trabalhando em projetos globais com líderes da indústria.</p>
+            </div>
+
+            <div class="gos-section obstacle">
+                <h3><span class="icon">⚠️</span>Obstáculo</h3>
+                <p>Ir além do desenvolvimento padrão, propondo e implementando soluções de ponta que resolvam problemas complexos para clientes exigentes, em diversos domínios e com tecnologias emergentes.</p>
+            </div>
+
+            <div class="gos-section solution">
+                <h3><span class="icon">✨</span>Solução</h3>
+                
+                <div class="example">
+                    <div class="example-title">⚡ Iniciativa Estratégica de 2 Anos - <I>I</I></div>
+                    <p>Implementou uma iniciativa de longo prazo focada em performance e resiliência, alcançando throughput ótimo e resiliência do sistema através de otimização abrangente da arquitetura.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Apache Kafka</span>
+                        <span class="tag">Event-Driven Design</span>
+                        <span class="tag">DDD</span>
+                        <span class="tag">Performance Optimization</span>
+                    </div>
+                </div>
+
+                <div class="example">
+                    <div class="example-title">💰 Plataforma Líder em Portugal - <I>IV</I></div>
+                    <p>Implementou soluções críticas para a principal plataforma independente de serviços e consultoria de empréstimos em Portugal, entregando valor de negócio tangível.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Business Value</span>
+                        <span class="tag">Critical Solutions</span>
+                        <span class="tag">Financial Services</span>
+                    </div>
+                </div>
+
+                <div class="example">
+                    <div class="example-title">🛰️ <I>V</I>: Projeto Galileo</div>
+                    <p>Como engenheira do segmento terra, criou a definição preliminar de design de ferramentas operacionais para o sistema de navegação por satélite Galileo - projetos de complexidade extrema com impacto global.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Satellite Navigation</span>
+                        <span class="tag">Global Impact</span>
+                        <span class="tag">High Precision</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene" style="animation-delay: 0.9s;">
+            <span class="chapter-number">Capítulo 3</span>
+            <h2>💎 Excelência Técnica em .NET</h2>
+            
+            <div class="gos-section goal">
+                <h3><span class="icon">🎯</span>Objetivo</h3>
+                <p>Proficiência excepcional em escrever código bem estruturado, testável e eficiente, seguindo as melhores práticas de desenvolvimento .NET e integrações robustas de sistemas.</p>
+            </div>
+
+            <div class="gos-section obstacle">
+                <h3><span class="icon">⚠️</span>Obstáculo</h3>
+                <p>Garantir que o código não apenas funciona, mas é de alta qualidade, fácil de manter, escalável e seguro. Evitar dívida técnica e problemas de performance através de boas práticas consistentes.</p>
+            </div>
+
+            <div class="gos-section solution">
+                <h3><span class="icon">✨</span>Solução</h3>
+                
+                <div class="example">
+                    <div class="example-title">🏗️ Arquitetura Moderna e Best Practices</div>
+                    <p>Domínio profundo das tecnologias .NET mais recentes com metodologias de ponta que garantem código de alta qualidade e manutenibilidade.</p>
+                    <div class="tech-tags">
+                        <span class="tag">.NET Core 8.0</span>
+                        <span class="tag">C#</span>
+                        <span class="tag">ASP.NET Core Web API</span>
+                        <span class="tag">Clean Architecture</span>
+                        <span class="tag">DDD</span>
+                        <span class="tag">Event-Driven</span>
+                    </div>
+                </div>
+
+                <div class="example">
+                    <div class="example-title">🗄️ Expertise em Bases de Dados</div>
+                    <p>Experiência consistente e comprovada em múltiplos projetos com bases de dados relacionais e integrações de sistemas.</p>
+                    <div class="tech-tags">
+                        <span class="tag">EF Core</span>
+                        <span class="tag">Code-First Migrations</span>
+                        <span class="tag">MS SQL Server</span>
+                        <span class="tag">T-SQL</span>
+                        <span class="tag">APIs</span>
+                        <span class="tag">WCF</span>
+                    </div>
+                </div>
+
+                <div class="example">
+                    <div class="example-title">⚡ Otimização de Performance</div>
+                    <p>Capacidade comprovada de analisar performance de sistemas, aplicar tuning e recomendar mudanças - garantindo não apenas funcionalidade, mas eficiência excepcional.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Performance Tuning</span>
+                        <span class="tag">System Analysis</span>
+                        <span class="tag">Optimization</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene" style="animation-delay: 1.2s;">
+            <span class="chapter-number">Capítulo 4</span>
+            <h2>🌟 Liderança Multidisciplinar</h2>
+            
+            <div class="gos-section goal">
+                <h3><span class="icon">🎯</span>Objetivo</h3>
+                <p>Trabalhar com equipas multidisciplinares, múltiplas indústrias e projetos diversos, superando desafios que testam e desenvolvem competências continuamente.</p>
+            </div>
+
+            <div class="gos-section obstacle">
+                <h3><span class="icon">⚠️</span>Obstáculo</h3>
+                <p>A dificuldade de transitar entre diferentes domínios de negócio, tecnologias e equipas, mantendo eficácia e capacidade de liderar tecnicamente em cenários de alta complexidade e mudança constante.</p>
+            </div>
+
+            <div class="gos-section solution">
+                <h3><span class="icon">✨</span>Solução</h3>
+                
+                <div class="example">
+                    <div class="example-title">🌐 Expertise Cross-Industry</div>
+                    <p>Histórico comprovado em indústrias diversas demonstrando versatilidade excepcional para entender e aplicar soluções tecnológicas em contextos muito distintos.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Financeira (<I>IV</I>)</span>
+                        <span class="tag">Automóvel (<I>II</I>)</span>
+                        <span class="tag">Cosmética (<I>III</I>)</span>
+                        <span class="tag">Espacial (<I>V</I>)</span>
+                    </div>
+                </div>
+
+                <div class="example">
+                    <div class="example-title">🎯 Liderança Estratégica de Longo Prazo</div>
+                    <p>Capacidade de implementar projetos complexos de 2 anos, envolvendo múltiplas partes interessadas e tecnologias, com foco em otimização de arquitetura empresarial.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Strategic Leadership</span>
+                        <span class="tag">Enterprise Architecture</span>
+                        <span class="tag">Stakeholder Management</span>
+                    </div>
+                </div>
+
+                <div class="example">
+                    <div class="example-title">🔄 Gestão End-to-End</div>
+                    <p>Liderança completa de projeto complexo de integração CRM, gerindo desafios técnicos e organizacionais com múltiplas tecnologias e sistemas.</p>
+                    <div class="tech-tags">
+                        <span class="tag">Full Life<I>II</I></span>
+                        <span class="tag">Integration Solutions</span>
+                        <span class="tag">SSIS</span>
+                        <span class="tag">SOAP</span>
+                        <span class="tag">JSON</span>
+                        <span class="tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scene conclusion">
+            <h2>✨ Uma Carreira de Impacto</h2>
+            <p style="font-size: 1.3em; margin-top: 30px; line-height: 1.8;">
+                Do espaço ao digital. Da visão à execução. Da liderança à inovação.<br>
+                Uma profissional que não espera pelo futuro - ela constrói-o.
+            </p>
+            
+            <div class="stats">
+                <div class="stat-card" style="animation-delay: 0.2s;">
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Indústrias Dominadas</div>
+                </div>
+                <div class="stat-card" style="animation-delay: 0.4s;">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Anos de Experiência</div>
+                </div>
+                <div class="stat-card" style="animation-delay: 0.6s;">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Capacidade de Adaptação</div>
+                </div>
+            </div>
+
+            <p style="font-size: 1.2em; margin-top: 50px; font-style: italic;">
+                "Repensar a arquitetura do amanhã, hoje."
+            </p>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="control-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">⬆️ Início</button>
+        <button class="control-btn" onclick="autoScroll()">▶️ Auto-Play</button>
+    </div>
+
+    <script>
+        let isAutoScrolling = false;
+
+        function autoScroll() {
+            if (isAutoScrolling) {
+                isAutoScrolling = false;
+                return;
+            }
+            
+            isAutoScrolling = true;
+            const scenes = document.querySelectorAll('.scene');
+            let currentScene = 0;
+
+            function scrollToNext() {
+                if (!isAutoScrolling || currentScene >= scenes.length) {
+                    isAutoScrolling = false;
+                    return;
+                }
+
+                scenes[currentScene].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                currentScene++;
+
+                setTimeout(scrollToNext, 8000);
+            }
+
+            scrollToNext();
+        }
+
+        // Animação de entrada gradual para as cenas
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.scene').forEach(scene => {
+            observer.observe(scene);
+        });
+    </script>
+</body>
+</html>
